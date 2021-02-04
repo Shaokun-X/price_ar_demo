@@ -15,14 +15,23 @@
       document.addEventListener("markerFound", () => {
         console.log("found marker");
       });
+
+      let sceneEl = document.querySelector("a-scene");
+      sceneEl.addEventListener("onefingermove", () => {
+        
+      });
+      sceneEl.addEventListener("twofingermove", () => {
+
+      });
     </script>
     <a-scene embedded arjs>
       <a-assets>
         <a-asset-item response-type="arraybuffer" id="heart" src="asset/heart.stl"></a-asset-item>
       </a-assets>
-      <a-marker type="pattern" url="asset/marker.patt" emitevents="true" size="0.05">
+      <a-marker type="pattern" url="asset/marker.patt" emitevents="true" size="0.05" smooth="true" smoothCount="2"
+        smoothTolerance="0.05" smoothThreshold="1">
       <!-- <a-marker preset="hiro" emitevents="true"> -->
-        <a-entity stl-model="src: #heart" scale="0.035 0.035 0.035" rotation="180 0 0" position="0 0 0"
+        <a-entity stl-model="src: #heart" scale="0.03 0.03 0.03" rotation="180 0 0" position="0 0 0"
           material="color: red; roughness: 0.1; metalness: 0">
         </a-entity>
       </a-marker>
