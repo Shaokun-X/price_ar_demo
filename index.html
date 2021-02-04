@@ -1,5 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AR demo</title>
   <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
   <!-- we import arjs version without NFT but with marker + location based support -->
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
@@ -17,7 +22,7 @@
       </a-assets>
       <a-marker type="pattern" url="asset/marker.patt" emitevents="true" size="0.05">
       <!-- <a-marker preset="hiro" emitevents="true"> -->
-        <a-entity stl-model="src: #heart" scale="0.05 0.05 0.05" rotation="180 0 0" position="0 0 0"
+        <a-entity stl-model="src: #heart" scale="0.035 0.035 0.035" rotation="180 0 0" position="0 0 0"
           material="color: red; roughness: 0.1; metalness: 0">
         </a-entity>
       </a-marker>
