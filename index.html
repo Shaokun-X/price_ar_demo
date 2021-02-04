@@ -9,26 +9,32 @@
   <!-- we import arjs version without NFT but with marker + location based support -->
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
   <script src="js/stl-loader.js"></script>
-  <body style="margin : 0px; overflow: hidden;">
+  <script src="js/control.js"></script>
 
-    <script>
+<body style="margin : 0px; overflow: hidden;">
+  <a-scene embedded arjs gesture-detector>
+    <a-assets>
+      <a-asset-item response-type="arraybuffer" id="heart" src="asset/heart.stl"></a-asset-item>
+    </a-assets>
+    <a-marker type="pattern" url="asset/marker.patt" emitevents="true" size="0.05" smooth="true" smoothCount="2"
+      smoothTolerance="0.05" smoothThreshold="1">
+      <!-- <a-marker preset="hiro" emitevents="true"> -->
+      <a-entity stl-model="src: #heart" scale="0.015 0.015 0.015" rotation="180 0 0" position="0 0 0"
+        material="color: red; roughness: 0.1; metalness: 0" gesture-handler="minScale: 0.25; maxScale: 10">
+      </a-entity>
+    </a-marker>
+    <a-entity camera></a-entity>
+  </a-scene>
+  <script>
+    document.addEventListener("DOMContentLoaded", (event) => {
       document.addEventListener("markerFound", () => {
         console.log("found marker");
       });
-      
-    </script>
-    <a-scene embedded arjs>
-      <a-assets>
-        <a-asset-item response-type="arraybuffer" id="heart" src="asset/heart.stl"></a-asset-item>
-      </a-assets>
-      <a-marker type="pattern" url="asset/marker.patt" emitevents="true" size="0.05" smooth="true" smoothCount="2"
-        smoothTolerance="0.05" smoothThreshold="1">
-      <!-- <a-marker preset="hiro" emitevents="true"> -->
-        <a-entity stl-model="src: #heart" scale="0.015 0.015 0.015" rotation="180 0 0" position="0 0 0"
-          material="color: red; roughness: 0.1; metalness: 0">
-        </a-entity>
-      </a-marker>
-      <a-entity camera></a-entity>
-    </a-scene>
-  </body>
+
+      let sceneEl = document.querySelector("a-scene");
+      control.bind(sceneEl);
+    });
+  </script>
+</body>
+
 </html>
