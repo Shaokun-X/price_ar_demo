@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", (evt) => {
     heartAssetItem.addEventListener("loaded", (evt) => {
         loadingScreen.classList.add("hide");
         loadingScreen.classList.remove("show");
+        loadingScreen.style.display = 'none';
     });
 
 });
