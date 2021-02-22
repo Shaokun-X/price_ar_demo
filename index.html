@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 
 <head>
   <meta charset="UTF-8">
@@ -8,31 +8,39 @@
   <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
   <!-- we import arjs version without NFT but with marker + location based support -->
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  <script src="js/main.js"></script>
   <script src="js/stl-loader.js"></script>
   <script src="js/gesture-detector.js"></script>
   <script src="js/gesture-handler.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.fluid.classless.min.css">
+  <link rel="stylesheet" href="css/style.css">
 
-<body style="margin : 0px; overflow: hidden;">
-  <a-scene embedded arjs gesture-detector>
-    <a-assets>
-      <a-asset-item response-type="arraybuffer" id="heart" src="asset/heart.stl"></a-asset-item>
-    </a-assets>
-    <a-marker type="pattern" url="asset/marker.patt" emitevents="true" size="0.05" smooth="true" smoothCount="2"
-      smoothTolerance="0.05" smoothThreshold="1">
-      <!-- <a-marker preset="hiro" emitevents="true"> -->
-      <a-entity stl-model="src: #heart" scale="0.015 0.015 0.015" rotation="180 0 0" position="0 0 0"
-        material="color: red; roughness: 0.1; metalness: 0" gesture-handler="minScale: 0.25; maxScale: 10">
-      </a-entity>
-    </a-marker>
-    <a-entity camera></a-entity>
-  </a-scene>
-  <script>
-    document.addEventListener("DOMContentLoaded", (event) => {
-      document.addEventListener("markerFound", () => {
-        console.log("found marker");
-      });
-    });
-  </script>
+<body>
+    <script>
+
+    </script>
+
+    <main>
+      <div id="loadingScreen" style="display: none;" class="show">
+        <h4>Loading...</h4>
+        <progress id="progressBar" max="0" value="0"></progress>
+      </div>
+      <!-- <button>Tips</button> -->
+    </main>
+
+    <a-scene embedded arjs gesture-detector vr-mode-ui="enabled: false">
+      <a-assets>
+        <a-asset-item response-type="arraybuffer" id="heart" src="asset/heart.stl"></a-asset-item>
+        <!-- <a-asset-item response-type="arraybuffer" id="leg" src="asset/test.stl"></a-asset-item> -->
+      </a-assets>
+      <a-marker type="pattern" url="asset/marker.patt" emitevents="true" size="0.05" smooth="true">
+        <a-entity stl-model="src: #heart" scale="0.01 0.01 0.01" rotation="0 0 0" position="0 0 0"
+          material="color: #994141; roughness: 1; metalness: 0" gesture-handler="minScale: 0.25; maxScale: 10">
+        </a-entity>
+      </a-marker>
+      <a-entity camera></a-entity>
+    </a-scene>
+
 </body>
 
 </html>

@@ -24,6 +24,12 @@ AFRAME.registerComponent("gesture-detector", {
         this.targetElement.addEventListener("touchend", this.emitGestureEvent);
 
         this.targetElement.addEventListener("touchmove", this.emitGestureEvent);
+
+        // this.targetElement.addEventListener("mousedown", this.emitGestureEvent);
+
+        // this.targetElement.addEventListener("mouseup", this.emitGestureEvent);
+
+        // this.targetElement.addEventListener("mousemove", this.emitGestureEvent);
     },
 
     remove: function () {
@@ -32,6 +38,12 @@ AFRAME.registerComponent("gesture-detector", {
         this.targetElement.removeEventListener("touchend", this.emitGestureEvent);
 
         this.targetElement.removeEventListener("touchmove", this.emitGestureEvent);
+
+        // this.targetElement.removeEventListener("mousedown", this.emitGestureEvent);
+
+        // this.targetElement.removeEventListener("mouseup", this.emitGestureEvent);
+
+        // this.targetElement.removeEventListener("mousemove", this.emitGestureEvent);
     },
 
     emitGestureEvent(event) {
