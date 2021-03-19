@@ -41,6 +41,7 @@ AFRAME.registerComponent('stl-model', {
 
         this.remove();
         loader = new STLLoader();
+        console.log(data);
         if (data.crossorigin) loader.setCrossOrigin(data.crossorigin);
         loader.load(data.src, function (geometry) {
             // Apply material.

@@ -12,7 +12,7 @@
   <script src="js/stl-loader.js"></script>
   <script src="js/gesture-detector.js"></script>
   <script src="js/gesture-handler.js"></script>
-  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.fluid.classless.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.classless.min.css">
   <link rel="stylesheet" href="css/style.css">
 
 <body>
@@ -25,8 +25,23 @@
         <h4>Loading...</h4>
         <progress id="progressBar" max="0" value="0"></progress>
       </div>
-      <!-- <button>Tips</button> -->
     </main>
+    <div class="panel">
+      <form action="" id="convertForm" method=''>
+        <input type="file" id="myFile" name="zip" style="width: 100%;" required accept=".zip">
+        <input type="radio" name="preset" value="bone" id="preset1" required>
+        <label for="preset1">Bone</label>
+        <input type="radio" name="preset" value="skin" id="preset2">
+        <label for="preset1">Skin</label>
+        <input type="radio" name="preset" value="soft" id="preset3">
+        <label for="preset1">Soft</label>
+        <input type="radio" name="preset" value="fat" id="preset4">
+        <label for="preset1">Fat</label>
+        <input type="submit" id="submitButton">
+        <p id="indicator" style="display: none;"></p>
+        <progress id="conversionBar" max="0" value="0" style="display: none;"></progress>
+      </form>
+    </div>
 
     <a-scene embedded arjs gesture-detector vr-mode-ui="enabled: false">
       <a-assets>

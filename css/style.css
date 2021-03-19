@@ -51,3 +51,21 @@ main {
     opacity: 0;
     transition: opacity 500ms;
 }
+
+
+#submitButton {
+    margin-top: 20px;
+}
+
+form {
+    margin-top: 10px;
+    padding: 20px;
+    opacity: 0.2;
+    transform: scale(0.8);
+    transition: 700ms;
+}
+
+form:hover {
+    opacity: 1;
+    background-color: white;
+}
