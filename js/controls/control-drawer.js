@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     expandBtn.onclick = (evt) => {
         drawerBody.classList.toggle("control__body--expanded");
         expandBtnBlock.classList.toggle("icon-arrow--reverse");
+        drawer.classList.toggle("control--hover");
     }
 
     // close when click outside
@@ -15,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!drawer.contains(target)) {
             drawerBody.classList.remove("control__body--expanded");
             expandBtnBlock.classList.remove("icon-arrow--reverse");
+            drawer.classList.remove("control--hover");
         }
     }
 });
