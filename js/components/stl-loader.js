@@ -41,7 +41,7 @@ AFRAME.registerComponent('stl-model', {
 
         this.remove();
         loader = new STLLoader();
-        console.log(data);
+        // console.log(data);
         if (data.crossorigin) loader.setCrossOrigin(data.crossorigin);
         loader.load(data.src, function (geometry) {
             // Apply material.
@@ -61,7 +61,8 @@ AFRAME.registerComponent('stl-model', {
             }
 
             el.setObject3D('mesh', model);
-            el.emit('model-loaded', { format: 'stl', model: model });
+            // console.log(el.getObject3D("mesh").geometry)
+            el.emit('stl-loaded', { format: 'stl', model: model });
         }, function (progress) { }, function (err) { console.log(err) });
     },
 

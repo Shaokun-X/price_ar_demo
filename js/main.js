@@ -1,4 +1,8 @@
-document.addEventListener("DOMContentLoaded", (evt) => {
+document.addEventListener("DOMContentLoaded", () => {
+
+    /*
+     * marker debug info
+     */
     document.addEventListener("markerFound", () => {
         console.log("👀found marker");
     });
@@ -7,28 +11,18 @@ document.addEventListener("DOMContentLoaded", (evt) => {
         console.log("😖lost marker");
     });
     
-    const loadingScreen = document.getElementById("loadingScreen");
-    loadingScreen.style.display = '';
-    const progressBar = document.getElementById("progressBar");
-    
-    const heartAssetItem = document.getElementById("heart");
-    heartAssetItem.addEventListener("progress", (evt) => {
-        // progressBar.
-        progressBar.max = evt.detail.xhr.total;
-        progressBar.value = evt.detail.xhr.loaded;
-        // console.log(evt.detail.xhr);
-    });
-    
-    heartAssetItem.addEventListener("loaded", (evt) => {
-        loadingScreen.classList.add("hide");
-        loadingScreen.classList.remove("show");
-        loadingScreen.style.display = 'none';
-    });
-    
-    
+    /*
+     * initialize file input plugin
+     */
+    bsCustomFileInput.init()
+
+
+    /*
+     * conversion
+     */
     const API_BASE_URL = "https://api.pricedemo.tk/";
     // const API_BASE_URL = "http://localhost:9087/";
-
+    // https://stackoverflow.com/questions/12835361/three-js-move-custom-geometry-to-origin
     // long-polling
     async function queryProgress() {
         let response = await fetch(API_BASE_URL + 'progress');
@@ -59,8 +53,7 @@ document.addEventListener("DOMContentLoaded", (evt) => {
                 await queryProgress();
                 // console.log(percent_completed);
                 indicator.innerText = "Converting..." + data.value + '%'
-                conversionBar.max = 100;
-                conversionBar.value = data.value;
+                conversionBarInside.style.width = data.value + "%";
             } else {
                 console.log("Successfully loaded model")
                 const entity = document.querySelector("a-entity");
@@ -74,6 +67,7 @@ document.addEventListener("DOMContentLoaded", (evt) => {
     // upload file and do the conversion
     const form = document.getElementById("convertForm");
     const conversionBar = document.getElementById("conversionBar");
+    const conversionBarInside = document.getElementById("conversionBarInside");
     const indicator = document.getElementById("indicator");
 
     form.addEventListener('submit', evt => {
@@ -92,8 +86,7 @@ document.addEventListener("DOMContentLoaded", (evt) => {
             let percent_completed = (evt.loaded / evt.total) * 100;
             // console.log(percent_completed);
             indicator.innerText = "Uploading..." + percent_completed.toFixed(2) + '%'
-            conversionBar.max = evt.total;
-            conversionBar.value = evt.loaded;
+            conversionBarInside.style.width = percent_completed.toFixed(2) + '%';
         });
 
         xhr.onload = function (evt) {
@@ -114,7 +107,8 @@ document.addEventListener("DOMContentLoaded", (evt) => {
         conversionBar.style.display = '';
         xhr.send(data);
 
+    });
 
-    })
+
 
 });
