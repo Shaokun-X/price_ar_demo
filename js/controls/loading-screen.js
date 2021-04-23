@@ -16,5 +16,8 @@ document.addEventListener("DOMContentLoaded", () => {
         loadingWrapper.classList.add("hide");
         // loadingWrapper.classList.remove("show");
         // loadingWrapper.style.display = 'none';
+        setTimeout(()=>{
+            loadingWrapper.remove();
+        }, 500);
     });
 });
