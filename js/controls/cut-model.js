@@ -1,8 +1,8 @@
 
 // import CSG from "../lib/three-csg.js";
 
-document.addEventListener("DOMContentLoaded",
-// $.ready(
+// document.addEventListener("DOMContentLoaded",
+$.ready(
     ()=>{
     const cutBtn = document.getElementById("cutBtn");
     const cutSwitch = document.getElementById("cutSwitch");
@@ -39,6 +39,7 @@ document.addEventListener("DOMContentLoaded",
 
     cutBtn.onclick = (evt) => {
         showMessage("Cutting, please wait...");
+        // the result of boolean operation
         let result = CSGintersect(mainModel.getObject3D("mesh"), cutBox.getObject3D("mesh"));
         mainModel.setObject3D("mesh", result);
     };
