@@ -60,7 +60,14 @@ AFRAME.registerComponent('stl-model', {
                 model = new THREE.Mesh(geometry, new THREE.MeshStandardMaterial());
             }
 
+            // console.log(model)
+            // model.materal.transparent = true;
+            // model.materal.opacity = 1;
             el.setObject3D('mesh', model);
+            // store an original copy
+            // let backup = model.clone();
+            // backup.opacity = 0;
+            // el.setObject3D('backup', backup);
             // console.log(el.getObject3D("mesh").geometry)
             el.emit('stl-loaded', { format: 'stl', model: model });
         }, function (progress) { }, function (err) { console.log(err) });

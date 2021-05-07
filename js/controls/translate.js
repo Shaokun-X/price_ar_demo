@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+$.ready( () => {
     const model = document.querySelector("a-entity");
     const xIncBtn = document.getElementById("xIncBtn");
     const yIncBtn = document.getElementById("yIncBtn");

@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+$.ready( () => {
     const expandBtn = document.querySelector(".control__expand-btn .icon-arrow svg");
     const expandBtnBlock = document.querySelector(".control__expand-btn .icon-arrow");
     const drawer = document.querySelector(".control");

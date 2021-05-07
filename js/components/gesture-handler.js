@@ -26,13 +26,13 @@ AFRAME.registerComponent("gesture-handler", {
     },
 
     update: function () {
-        if (this.data.enabled) {
-            this.el.sceneEl.addEventListener("onefingermove", this.handleRotation);
-            this.el.sceneEl.addEventListener("twofingermove", this.handleScale);
-        } else {
-            this.el.sceneEl.removeEventListener("onefingermove", this.handleRotation);
-            this.el.sceneEl.removeEventListener("twofingermove", this.handleScale);
-        }
+        // if (this.data.enabled) {
+        this.el.sceneEl.addEventListener("onefingermove", this.handleRotation);
+        this.el.sceneEl.addEventListener("twofingermove", this.handleScale);
+        // } else {
+        //     this.el.sceneEl.removeEventListener("onefingermove", this.handleRotation);
+        //     this.el.sceneEl.removeEventListener("twofingermove", this.handleScale);
+        // }
     },
 
     remove: function () {
@@ -41,6 +41,9 @@ AFRAME.registerComponent("gesture-handler", {
     },
 
     handleRotation: function (event) {
+        if (!this.data.enabled){
+            return;
+        }
         if (this.isVisible) {
             this.el.object3D.rotation.y +=
                 event.detail.positionChange.x * this.data.rotationFactor;
@@ -50,6 +53,9 @@ AFRAME.registerComponent("gesture-handler", {
     },
 
     handleScale: function (event) {
+        if (!this.data.enabled) {
+            return;
+        }
         if (this.isVisible) {
             this.scaleFactor *=
                 1 + event.detail.spreadChange / event.detail.startSpread;
@@ -64,4 +70,26 @@ AFRAME.registerComponent("gesture-handler", {
             this.el.object3D.scale.z = this.scaleFactor * this.initialScale.z;
         }
     },
+
+    raycastDetect() {
+        let camera = document.querySelector("a-scene").camera;
+        let mouse3D = new THREE.Vector2(
+            (evt.clientX / window.innerWidth) * 2 - 1,
+            -(evt.clientY / window.innerHeight) * 2 + 1
+        );
+        // console.log(mouse3D)
+        // console.log(camera.position)
+        let raycaster = new THREE.Raycaster();
+        raycaster.setFromCamera(mouse3D, camera);
+        let objects = Array.from(document.querySelectorAll("a-marker a-entity"));
+        objects = objects.map((e, i) => { return e.object3D })
+        // console.log(objects)
+        let intersects = raycaster.intersectObjects(objects, true);
+        // console.log(intersects)
+        if (intersects.length > 0) {
+            return true;
+        }
+        return false;
+    },
+    
 });

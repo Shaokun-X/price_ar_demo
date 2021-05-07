@@ -11,7 +11,7 @@ AFRAME.registerComponent("model-repositioner", {
         this.el.addEventListener("stl-loaded", (evt) => {
             let geo = this.el.getObject3D("mesh").geometry;
             geo.computeBoundingBox();
-            console.log(geo.boundingBox)
+            // console.log(geo.boundingBox)
             // expected max (x,y,z) of bounding box
             let expectedY = 5.0;
             let expectedX = (geo.boundingBox.max.x - geo.boundingBox.min.x) / 2;
@@ -22,7 +22,7 @@ AFRAME.registerComponent("model-repositioner", {
                 expectedZ - geo.boundingBox.max.z + this.data.z
             );
             geo.computeBoundingBox();
-            console.log(geo.boundingBox)
+            // console.log(geo.boundingBox)
         });
     },
 
