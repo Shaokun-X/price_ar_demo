@@ -46,6 +46,9 @@ $.ready(() => {
                 entity.setAttribute("stl-model", { src: API_BASE_URL + "asset/convertedModel.stl" });
                 indicator.style.display = 'none';
                 conversionBar.style.display = 'none';
+                const downloadBtn = document.getElementById("stlDownload");
+                downloadBtn.style.display = "";
+                downloadBtn.setAttribute("href", API_BASE_URL + "asset/convertedModel.stl");
             }
         }
     }
