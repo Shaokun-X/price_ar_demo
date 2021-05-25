@@ -4,7 +4,7 @@ $.ready( () => {
     // const loadingBar = document.getElementById("loadingBar");
     const loadingBarInside = document.getElementById("loadingBarInside");
 
-    const heartAssetItem = document.getElementById("scanObj");
+    const heartAssetItem = document.getElementById("heart");
     heartAssetItem.addEventListener("progress", (evt) => {
         let percent_completed = (evt.detail.loadedBytes / evt.detail.totalBytes) * 100;
         loadingBarInside.style.width = percent_completed.toFixed(2) + '%'

@@ -210,6 +210,7 @@ CSG.toMesh = function(csg, toMatrix, toMaterial) {
     let inv = new THREE.Matrix4().copy(toMatrix).invert();
     // console.log(inv)
     geom.applyMatrix4(inv);
+    console.log(geom)
     geom.computeBoundingSphere();
     geom.computeBoundingBox();
     let m = new THREE.Mesh(geom,toMaterial);

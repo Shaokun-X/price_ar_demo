@@ -42,5 +42,6 @@ $.ready(
         // the result of boolean operation
         let result = CSGintersect(mainModel.getObject3D("mesh"), cutBox.getObject3D("mesh"));
         mainModel.setObject3D("mesh", result);
+        console.log(result)
     };
 });

@@ -140,14 +140,14 @@
 
   <a-scene embedded arjs="debugUIEnabled: false" gesture-detector vr-mode-ui="enabled: false" renderer="precision: medium" input-manager>   
     <a-assets>
-      <!-- <a-asset-item response-type="arraybuffer" id="heart" src="asset/heart.stl"></a-asset-item> -->
-      <a-asset-item response-type="arraybuffer" id="heart" src="asset/model.stl"></a-asset-item>
-      <a-asset-item id="scanObj" src="asset/scan.obj"></a-asset-item>
-      <a-asset-item id="scanMtl" src="asset/scan.mtl"></a-asset-item>
+      <a-asset-item response-type="arraybuffer" id="heart" src="asset/heart.stl"></a-asset-item>
+      <!-- <a-asset-item response-type="arraybuffer" id="heart" src="asset/model.stl"></a-asset-item> -->
+      <!-- <a-asset-item id="scanObj" src="asset/scan.obj"></a-asset-item> -->
+      <!-- <a-asset-item id="scanMtl" src="asset/scan.mtl"></a-asset-item> -->
     </a-assets>
     <a-marker type="pattern" url="asset/marker.patt" emitevents="true" size="0.05" smooth="true">
       <a-entity stl-model="src: #heart" scale="0.01 0.01 0.01" rotation="0 0 0" position="0 0 0"
-        material="color: grey; roughness: 1; metalness: 0" gesture-handler="minScale: 0.25; maxScale: 10"
+        material="color: red; roughness: 1; metalness: 0" gesture-handler="minScale: 0.25; maxScale: 10"
         model-repositioner id="mainModel">
       </a-entity>
       <!-- <a-obj-model src="#scanObj" mtl="#scanMtl" id="mainModel"
