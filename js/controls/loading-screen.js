@@ -18,6 +18,15 @@ $.ready( () => {
         // loadingWrapper.style.display = 'none';
         setTimeout(()=>{
             loadingWrapper.remove();
+            // show control panel after loading
+            setTimeout(() => {
+                const expandBtnBlock = document.querySelector(".control__expand-btn .icon-arrow");
+                const drawer = document.querySelector(".control");
+                const drawerBody = document.querySelector(".control__body");
+                drawerBody.classList.toggle("control__body--expanded");
+                expandBtnBlock.classList.toggle("icon-arrow--reverse");
+                drawer.classList.toggle("control--hover");
+            }, 500);
         }, 500);
     });
 });
